@@ -9,7 +9,7 @@
   }
 
   # per boot
-  [ -f '/tmp/.kfs' ] || kfs.fixup
-  unset kfs.fixup
+  [ -f '/tmp/.kfs.ok' ] || kfs.fixup
+  unset -f kfs.fixup
 
 }
