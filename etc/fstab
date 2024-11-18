@@ -1,0 +1,6 @@
+# disk    |  mountpoint     | fstype  | options                                  | check order
+UUID=xxx     /                ext4      rw,relatime                                0 1
+UUID=xxx     /usr             ext4      rw,relatime                                0 2
+UUID=xxx     /var             ext4      rw,relatime                                0 2
+UUID=xxx     /boot            ext2      ro,relatime                                0 2
+proc         /proc            proc      rw,nosuid,nodev,noexec,relatime,hidepid=2  0 0
