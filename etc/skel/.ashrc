@@ -1,0 +1,7 @@
+# ~/.ashrc
+
+function ashrc()
+{
+  vi ~/.ashrc
+  . ~/.ashrc
+}
