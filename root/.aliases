@@ -1,4 +1,18 @@
 # ~/.aliases
+# manage boot mount point.
 alias boot.rw='mount -o remount,rw /boot'
 alias boot.ro='mount -o remount,ro /boot'
 
+# firewall.
+# arp
+alias arptables.list='arptables -nvL'
+alias arptables.restore='arptables-restore < /etc/arptables'
+alias arptables.save='arptables-save > /etc/arptables'
+# ipv4
+alias iptables.list='iptables -nvL'
+alias iptables.restore='iptables-restore < /etc/ip4tables'
+alias iptables.save='iptables-save > /etc/ip4tables'
+# ipv6
+alias ip6tables.list='ip6tables -nvL'
+alias ip6tables.restore='ip6tables-restore < /etc/ip6tables'
+alias ip6tables.save='ip6tables-save > /etc/ip6tables'
