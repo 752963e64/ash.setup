@@ -1,5 +1,9 @@
 # ~/.ashrc
 
+# ensure root doesn't leak information
+# when creating file/dir
+umask 027
+
 function ashrc()
 {
   vi ~/.ashrc
