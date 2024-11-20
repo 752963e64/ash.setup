@@ -2,4 +2,4 @@
 Enhance your bb ash experience.
 
 # ASH
-![alpine.configs Honeybadger](/.ungenannt_nachteule.ANS.png)
+![alpine.configs Honeybadger](./.ungenannt_nachteule.ANS.png)

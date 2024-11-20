@@ -5,3 +5,17 @@ ashrc()
   vi ~/.ashrc
   . ~/.ashrc
 }
+
+kfs.closed()
+{
+  chmod o-rwx /sys /proc
+  [ -f /tmp/.kfs.open ] && rm /tmp/.kfs.open
+  touch /tmp/.kfs.closed
+}
+
+kfs.openbar()
+{
+  chmod o+rx /sys /proc
+  [ -f /tmp/.kfs.closed ] && rm /tmp/.kfs.closed
+  touch /tmp/.kfs.open
+}
