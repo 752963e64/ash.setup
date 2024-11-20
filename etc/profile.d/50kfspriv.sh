@@ -1,6 +1,6 @@
 # /etc/profile.d/**kfspriv.sh
 
-[ "$USER" = 'root' ] && {
+[ $USER = 'root' ] && {
 
   function kfs.fixup()
   {
@@ -9,7 +9,7 @@
   }
 
   # per boot
-  [ -f '/tmp/.kfs.ok' ] || kfs.fixup
+  [ -f /tmp/.kfs.ok ] || kfs.fixup
   unset -f kfs.fixup
 
 }

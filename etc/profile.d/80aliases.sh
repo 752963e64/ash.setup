@@ -5,4 +5,4 @@ alias mv='mv -v'
 alias ..='cd ..'
 
 # user defined aliases.
-[ -f '~/.aliases' ] && . ~/.aliases
+[ -f ~/.aliases ] && . ~/.aliases

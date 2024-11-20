@@ -4,7 +4,7 @@
 # when creating file/dir
 umask 027
 
-function ashrc()
+ashrc()
 {
   vi ~/.ashrc
   . ~/.ashrc

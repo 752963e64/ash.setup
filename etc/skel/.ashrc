@@ -1,6 +1,6 @@
 # ~/.ashrc
 
-function ashrc()
+ashrc()
 {
   vi ~/.ashrc
   . ~/.ashrc
