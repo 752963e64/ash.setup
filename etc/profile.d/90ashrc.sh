@@ -2,6 +2,7 @@
 
 ed25519() {
   ssh-keygen -t ed25519 -C "$1"
+  # should check if ssh-agent is running...
   ssh-add ~/.ssh/id_ed25519
   cat ~/.ssh/id_ed25519.pub
 }
@@ -20,6 +21,8 @@ find.file.exec()
 
 urlencode() {
   # urlencode <string>
+  # https://gist.github.com/cdown/1163649
+  # modified for ash by 752963e64 - 22/11/2024
   local length=$((${#1}-1))
   i=0; while [ $i -le $length ]; do
     local c="${1:$i:1}"
@@ -33,6 +36,7 @@ urlencode() {
 
 urldecode() {
   # urldecode <string>
+  # https://gist.github.com/cdown/1163649
   local url_encoded="${1//+/ }"
   printf '%b' "${url_encoded//%/\\x}"
 }
