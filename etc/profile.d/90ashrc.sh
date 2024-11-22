@@ -9,8 +9,8 @@ ed25519() {
 # Open bar.
 chmod.fixup()
 {
-  for i in $(find . -type d); do chmod -v og+rx $i; done
-  for i in $(find . -type f); do chmod -v og+r $i; done
+  for i in $(find . -type d); do chmod -v og+rx "$i"; done
+  for i in $(find . -type f); do chmod -v og+r "$i"; done
 }
 
 find.file.exec()
@@ -41,7 +41,7 @@ shellcheck() {
   [[ -f "$1" ]] && curl -d script=$(urlencode "$(cat $1)") https://www.shellcheck.net/shellcheck.php | jq '.[] | .code,.message'
 }
 
-function host.io()
+host.io()
 {
   [[ ${1} ]] && { curl "https://host.io/api/full/${1}?token=YOURTOKEN"; }
 }
