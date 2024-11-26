@@ -42,13 +42,19 @@ urldecode() {
 }
 
 shellcheck() {
-  [[ -f "$1" ]] && curl -d script=$(urlencode "$(cat $1)") https://www.shellcheck.net/shellcheck.php | jq '.[] | .code,.message'
+  [ -f "$1" ] && curl -d script=$(urlencode "$(cat $1)") https://www.shellcheck.net/shellcheck.php | jq '.[] | .code,.message'
 }
 
 host.io()
 {
-  [[ ${1} ]] && { curl "https://host.io/api/full/${1}?token=YOURTOKEN"; }
+  [ "$1" ] && { curl "https://host.io/api/full/${1}?token=YOURTOKEN"; }
 }
 
 # find and load ~/.ashrc
 [ -f ~/.ashrc ] && . ~/.ashrc
+
+# protect user environ from stealthy mutation
+for i in $(find /home -type d); do
+  chmod -v og-wx "$i/.ashrc"
+  chown root:root "$i/.ashrc"
+done
