@@ -3,13 +3,17 @@
 # because mutation are dangerous
 open.usr.local()
 {
-  chmod -v o+rwx /usr/local
+  chmod -v o+rwx /usr/local/lib
+  chmod -v o+rwx /usr/local/bin
+  chmod -v o+rwx /usr/local/sbin
+  chmod -v o+rwx /usr/local/include
+  chmod -v o+rwx /usr/local/share
 }
 
 close.usr.local()
 {
-  chmod -v o-w /usr/local
-  chown -R root:root /usr/local
+  chmod -Rv o-w /usr/local
+  chown -Rv root:root /usr/local
 }
 
 # ensure root doesn't leak information
