@@ -14,6 +14,7 @@ chmod.fixup()
   for i in $(find . -type f); do chmod -v og+r "$i"; done
 }
 
+
 find.file.exec()
 {
   for i in $(find . -type f -executable); do echo "$i"; done
@@ -54,7 +55,8 @@ host.io()
 [ -f ~/.ashrc ] && . ~/.ashrc
 
 # protect user environ from stealthy mutation
-for i in $(find /home -type d); do
-  chmod -v og-wx "$i/.ashrc"
-  chown root:root "$i/.ashrc"
-done
+# for i in $(find /home -type d); do
+#  chmod -v og-wx "$i/.ashrc"
+#  chown root:root "$i/.ashrc"
+# done
+

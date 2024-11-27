@@ -1,5 +1,17 @@
 # ~/.ashrc
 
+# because mutation are dangerous
+open.usr.local()
+{
+  chmod -v o+rwx /usr/local
+}
+
+close.usr.local()
+{
+  chmod -v o-w /usr/local
+  chown -R root:root /usr/local
+}
+
 # ensure root doesn't leak information
 # when creating file/dir
 umask 027
