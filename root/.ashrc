@@ -16,6 +16,17 @@ close.usr.local()
   chown -Rv root:root /usr/local
 }
 
+open.opt()
+{
+  chmod -v o+rwx /opt
+}
+
+close.opt()
+{
+  chmod -Rv o-w /opt
+  chown -Rv root:root /opt
+}
+
 # ensure root doesn't leak information
 # when creating file/dir
 umask 027
