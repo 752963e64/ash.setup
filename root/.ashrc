@@ -23,7 +23,7 @@ open.opt()
 
 close.opt()
 {
-  chmod -Rv o-w /opt
+  chmod -v o-w /opt
   chown -Rv root:root /opt
 }
 
