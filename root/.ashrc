@@ -12,7 +12,7 @@ ashrc()
 }
 
 # permit to install content inside /usr/local from user privilege.
-open.usr.local()
+fs.open.usr.local()
 {
   chmod -v o+rwx /usr/local/lib
   chmod -v o+rwx /usr/local/bin
@@ -22,24 +22,25 @@ open.usr.local()
 }
 
 # permit to install content inside /opt from user privilege.
-open.opt()
+fs.open.opt()
 {
   chmod -v o+rwx /opt
 }
 
 # clean up write access and reset owner to root.
-close()
+fs.close()
 {
   if [ -d "$1" ]; then
-    chmod -Rv o-w /usr/local
-    chown -Rv root:root /usr/local
+    chmod -Rv o-w "$1"
+    chown -Rv root:root "$1"
   else
-    echo "$0 <dir>"
+    echo "$0 <dir>\n\t- The directory to reset privileges."
   fi
 }
 
 # close network entry at the routing lvl and open route access to a particular host.
-net.close()
+# if your netmask is /32, use AS IS. if your netmask is /24, adding gateway link is uneeded.
+route.close.wan()
 {
   local GATEWAY="$1"
   local TRUSTEDHOST="$2"
@@ -48,13 +49,18 @@ net.close()
   ip route del default
 }
 
+route.open.to.via()
+{
+  local GATEWAY="$1"
+  local TRUSTEDHOST="$2"
+  ip route add "$TRUSTEDHOST" via "$GATEWAY"
+}
+
 # open network entry at the routing lvl to the wide area network
-net.open()
+route.open.wan()
 {
   local GATEWAY="$1"
   local TRUSTEDHOST="$2"
   ip route add default via "$GATEWAY"
   ip route del "$TRUSTEDHOST"
 }
-
-
