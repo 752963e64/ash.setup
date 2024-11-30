@@ -9,11 +9,11 @@ Enhance your bb ash experience.
 
 - learn to install with user privileges and a separate gatekeeper "root"... most ppl uses sudo... me I don't...
 
-- **net.open**,**net.close** the scenario attack becomes entirely **inside out** from the only allowed routes...
+- **NO ROUTE TO HOST**(inside the **DMZ**) The scenario attack becomes entirely **inside out** from the only allowed routes...
 
-an attacker is far to be able to route back host to the wan without performing zig zag in some know place.
+an attacker is far to be able to route back host to the wan without performing zig zag in some known place.
 
-Do we need a 600pages book to learn about that?? absolutly not. 4 lines we good.
+Do we need a 600pages book to learn about that?? absolutly not. 4 lines we good. Where is my PhD? :D
 
 # ASH
 ![ash.configs Honeybadger](.ungenannt_nachteule.ANS.png)
