@@ -1,0 +1,8 @@
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet manual
+	address X.X.X.X
+	netmask X.X.X.X
+	gateway X.X.X.X

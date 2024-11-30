@@ -1,6 +1,17 @@
 # ~/.ashrc
 
-# because mutation are dangerous
+# ensure root doesn't leak information
+# when creating file/dir
+umask 027
+
+# edit and reload ashrc.
+ashrc()
+{
+  vi ~/.ashrc
+  . ~/.ashrc
+}
+
+# permit to install content inside /usr/local from user privilege.
 open.usr.local()
 {
   chmod -v o+rwx /usr/local/lib
@@ -10,30 +21,39 @@ open.usr.local()
   chmod -v o+rwx /usr/local/share
 }
 
-close.usr.local()
-{
-  chmod -Rv o-w /usr/local
-  chown -Rv root:root /usr/local
-}
-
+# permit to install content inside /opt from user privilege.
 open.opt()
 {
   chmod -v o+rwx /opt
 }
 
-close.opt()
+# clean up write access and reset owner to root.
+close()
 {
-  chmod -v o-w /opt
-  chown -Rv root:root /opt
+  if [ -d "$1" ]; then
+    chmod -Rv o-w /usr/local
+    chown -Rv root:root /usr/local
+  else
+    echo "$0 <dir>"
+  fi
 }
 
-# ensure root doesn't leak information
-# when creating file/dir
-umask 027
-
-ashrc()
+# close network entry at the routing lvl and open route access to a particular host.
+net.close()
 {
-  vi ~/.ashrc
-  . ~/.ashrc
+  local GATEWAY="$1"
+  local TRUSTEDHOST="$2"
+  ip route add "$GATEWAY" dev eth0 proto kernel scope link
+  ip route add "$TRUSTEDHOST" via "$GATEWAY"
+  ip route del default
+}
+
+# open network entry at the routing lvl to the wide area network
+net.open()
+{
+  local GATEWAY="$1"
+  local TRUSTEDHOST="$2"
+  ip route add default via "$GATEWAY"
+  ip route del "$TRUSTEDHOST"
 }
 
