@@ -1,8 +1,8 @@
 # ~/.ashrc
 
 # ensure root doesn't leak information
-# when creating file/dir however this may be problematic
-# whith package manager that follows the mask...
+# when creating file/dir, however this may be problematic
+# with package manager that follows the mask...
 umask 027
 
 # edit and reload ashrc.
