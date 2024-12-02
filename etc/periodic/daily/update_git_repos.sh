@@ -5,7 +5,7 @@
 USERNAME="repos"
 
 # Because the script is run as root with crond being a system daemon.
-# We change access to "repos" user manualy. 
+# We change access to "repos" user manualy. no password is required.
 
 su - $USERNAME
 
@@ -21,6 +21,8 @@ for i in *; do
   fi
   cd ..
 done
+
+unset REPO USERNAME
 
 exit 0
 
