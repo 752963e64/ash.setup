@@ -10,8 +10,10 @@ su - $USERNAME
 
 umask 022
 
-# to avoid blocking in some cases, curl is throw as a job
+# to avoid blocking in some cases, curl is thrown as a job
 # the status will appear in a file(.%hostname.report) into tmp.
-curl --silent --output /dev/null --write-out "%{http_code}" $HOSTNAME > /tmp/".${HOSTNAME##*/}.report" &
+curl -A "HelloItsMe" -I -s -o /dev/null -w "%{http_code}" -L $HOSTNAME > /tmp/".${HOSTNAME##*/}.report" &
+
+unset USERNAME HOSTNAME
 
 exit 0
