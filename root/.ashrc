@@ -35,7 +35,7 @@ fs.close()
     chmod -Rv o-w "$1"
     chown -Rv root:root "$1"
   else
-    echo "$0 <dir>\n\t- The directory to reset privileges."
+    echo "$0 <dir>\n\t- <dir>:The directory to reset privileges."
   fi
 }
 
