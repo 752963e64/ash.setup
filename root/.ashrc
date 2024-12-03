@@ -45,16 +45,20 @@ route.close.wan()
 {
   local GATEWAY="$1"
   local TRUSTEDHOST="$2"
-  ip route add "$GATEWAY" dev eth0 proto kernel scope link
-  ip route add "$TRUSTEDHOST" via "$GATEWAY"
+  local INTERFACE="$3"
+  ip route add "$GATEWAY" dev "$INTERFACE"  metric 1 onlink
   ip route del default
+  ip route add default blackhole dev "$INTERFACE"
 }
 
 route.open.to.via()
 {
   local GATEWAY="$1"
   local TRUSTEDHOST="$2"
-  ip route add "$TRUSTEDHOST" via "$GATEWAY"
+  local INTERFACE="$3"
+  ip route del default
+  ip route add "$TRUSTEDHOST" via "$GATEWAY" dev "$INTERFACE"  metric 1 onlink
+  ip route add default blackhole dev "$INTERFACE"
 }
 
 # open network entry at the routing lvl to the wide area network
@@ -62,6 +66,7 @@ route.open.wan()
 {
   local GATEWAY="$1"
   local TRUSTEDHOST="$2"
-  ip route add default via "$GATEWAY"
+  local INTERFACE="$3"
+  ip route add default via "$GATEWAY" dev "$INTERFACE"  metric 1 onlink
   ip route del "$TRUSTEDHOST"
 }

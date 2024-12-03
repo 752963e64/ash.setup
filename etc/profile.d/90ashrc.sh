@@ -17,6 +17,7 @@ chmod.fixup()
 
 find.file.exec()
 {
+  # this aint bb find.
   for i in $(find . -type f -executable); do echo "$i"; done
 }
 
