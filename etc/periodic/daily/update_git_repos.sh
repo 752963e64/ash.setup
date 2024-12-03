@@ -17,7 +17,7 @@ for i in *; do
   cd "./$i"
   git pull
   if [ $? != 0 ]; then
-    logger -s -p "cron.debug" "Something went wrong updating $REPO/$i."
+    logger -s -p "cron.debug" "$0:Something went wrong updating $REPO/$i."
   fi
   cd ..
 done
