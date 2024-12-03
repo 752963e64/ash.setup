@@ -43,7 +43,8 @@ fs.close()
 # .1 because you route to your trusty dns first...
 # .2 because you have to req an host before going out...
 # .3 a domain name translate to IP and an IP is the identifier your routing table needs.
-# .4 WHERE IS MY PHD?
+# .4 This should be implemented into a local DNS RELAY with routing access.
+# .5 WHERE IS MY damn fucking PHD?
 
 # close network entry at the routing lvl and open route access to a particular host.
 route.close.wan()
