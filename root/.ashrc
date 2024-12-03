@@ -67,6 +67,6 @@ route.open.wan()
   local GATEWAY="$1"
   local TRUSTEDHOST="$2"
   local INTERFACE="$3"
+  ip route del default
   ip route add default via "$GATEWAY" dev "$INTERFACE"  metric 1 onlink
-  ip route del "$TRUSTEDHOST"
 }
