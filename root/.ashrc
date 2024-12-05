@@ -51,9 +51,7 @@ fs.close()
 # close network entry at the routing lvl and open route access to a particular host.
 route.close.wan()
 {
-  local INTERFACE="$3"
   ip route del default
-  ip route add default blackhole dev "$INTERFACE"
 }
 
 route.open.to.via()
@@ -68,7 +66,13 @@ route.open.to.via()
 route.open.wan()
 {
   local GATEWAY="$1"
-  local TRUSTEDHOST="$2"
   local INTERFACE="$3"
   ip route add default via "$GATEWAY" dev "$INTERFACE"  metric 1 onlink
+}
+
+route.blackhole.wan()
+{
+  local INTERFACE="$3"
+  ip route del default
+  ip route add default blackhole dev "$INTERFACE"
 }
