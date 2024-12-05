@@ -24,13 +24,13 @@ just explain me why a fucking ip block from 4228250625 ip address just go throug
 
 and just one IP doesn't... IT's CLEAR like water... only idiot doesn't understand what's happening here... :D
 
-We have A nice discovery here :)
+THEY LOVES GANGBANG in your devices and it's obvious from their behavior :D We have A nice discovery here... they watching me... :)
 
-# I love dumbasses :D
+#### I love dumbasses :D
 
 we need to modify their modifications to be free as in freedom... damn it I can't belive I spotted them so easily. :DDDDD
 
-#### this feature is in pause for sabotage by the kernel team! YEAH!!! :D
+# this feature is in pause for sabotage by the kernel team! YEAH!!! :D
 
 an attacker is far to be able to route back host to the wan without performing zig zag in some known place.
 
