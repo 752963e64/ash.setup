@@ -5,15 +5,16 @@ lol()
   unset -f lol
   while true
   do
-    if [ -f ~/.mp3 ]; then
-      rm -v ~/.mp3
+    if [ -f ~/.gif ]; then
+      rm -v ~/.gif
       SRC=$(cat ~/.cache/source && rm ~/.cache/source)
       DEST=$(cat ~/.cache/destination && rm ~/.cache/destination)
+      SIZE=$(cat ~/.cache/size && rm ~/.cache/size)
       [ -d "$DEST" ] || { echo "DEST directory doesn't exist."; mkdir -pv $DEST; }
       [ -d "$SRC" ] || { echo "SRC directory doesn't exist."; exit 1; }
       cd "$SRC"
       IFS=$'\n'; for i in *; do
-       ffmpeg -i "$i" -sn -vn -dn -map_metadata -1 "$DEST/${i%.*}.mp3"
+        magick convert "$i" -filter box -coalesce -resize "${SIZE:-1024x768}"\! -strip -deconstruct "$DEST/$i"
       done
     fi
     sleep 5

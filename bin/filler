@@ -6,5 +6,8 @@
 
 echo "$1" > ~/.cache/source
 echo "$2" > ~/.cache/destination
+
+[ "$3" ] && { echo "$3" > ~/.cache/size; }
+
 touch ~/.ok
 
