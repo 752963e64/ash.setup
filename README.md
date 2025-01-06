@@ -13,5 +13,19 @@ Do we need a 600pages book to learn about that?? absolutly not. 4 lines we good.
 
 - some periodic goodies... some ppl call them workflow... it's tasky without the hands :D
 
+## bin
+
+into a shell
+
+```$ autoencoder.mp3```
+
+into another
+
+```filler ~/source_directory ~/destination directory```
+
+
+watch first shell starting to work by itself.
+
+
 # ASH
 ![ash.configs Honeybadger](.ungenannt_nachteule.ANS.png)
