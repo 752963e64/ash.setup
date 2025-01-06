@@ -1,13 +1,15 @@
 #!/bin/sh
 
-[ -d "$1" ] || { echo "Path to the source directory."; exit 1; }
+[ "$1" ] || { echo "Which automate this job's meant to? <gif:mp3>."; exit 1; }
 
-[ "$2" ] || { echo "Path to the destination directory. Will be created if It doesn't exist."; exit 1; }
+[ -d "$2" ] || { echo "Path to the source directory."; exit 1; }
 
-echo "$1" > ~/.cache/source
-echo "$2" > ~/.cache/destination
+[ "$3" ] || { echo "Path to the destination directory. Will be created if It doesn't exist."; exit 1; }
 
-[ "$3" ] && { echo "$3" > ~/.cache/size; }
+echo "$2" > ~/.cache/source
+echo "$3" > ~/.cache/destination
 
-touch ~/.ok
+[ "$4" ] && { echo "$4" > ~/.cache/size; }
+
+touch ~/.$1
 
