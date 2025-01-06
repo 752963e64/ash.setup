@@ -1,0 +1,23 @@
+#!/bin/sh
+
+lol()
+{
+  unset -f lol
+  while true
+  do
+    if [ -f ~/.ok ]; then
+      rm -v ~/.ok
+      SRC=$(cat ~/.cache/source && rm ~/.cache/source)
+      DEST=$(cat ~/.cache/destination && rm ~/.cache/destination)
+      [ -d "$DEST" ] || { echo "DEST directory doesn't exist."; mkdir -pv $DEST; }
+      [ -d "$SRC" ] || { echo "SRC directory doesn't exist."; exit 1; }
+      cd "$SRC"
+      IFS=$'\n'; for i in *; do
+       ffmpeg -i "$i" -sn -vn -dn -map_metadata -1 "$DEST/${i%.*}.mp3"
+      done
+    fi
+    sleep 5
+  done
+}
+lol
+

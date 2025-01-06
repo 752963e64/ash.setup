@@ -1,0 +1,10 @@
+#!/bin/sh
+
+[ -d "$1" ] || { echo "Path to the source directory."; exit 1; }
+
+[ "$2" ] || { echo "Path to the destination directory. Will be created if It doesn't exist."; exit 1; }
+
+echo "$1" > ~/.cache/source
+echo "$2" > ~/.cache/destination
+touch ~/.ok
+
