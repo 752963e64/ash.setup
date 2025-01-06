@@ -15,16 +15,17 @@ Do we need a 600pages book to learn about that?? absolutly not. 4 lines we good.
 
 ## bin
 
-into a shell
+- a loop encoding a provided directory with suitable medias using **filler** script.
 
 ```$ autoencoder.mp3```
 
-into another
+- a loop rescaling a provided directory with suitable medias using **filler** script.
 
-```filler ~/source_directory ~/destination directory```
+```$ autorescale.gif```
 
+- filler script fills job the given auto mate.
 
-watch first shell starting to work by itself.
+```filler <gif:mp3> ~/source_directory ~/destination directory <gif:1024x768>```
 
 
 # ASH
