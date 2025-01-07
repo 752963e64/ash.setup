@@ -6,7 +6,7 @@ lol()
   while true
   do
     if [ -f ~/.mp3 ]; then
-      rm -v ~/.mp3
+      mv -v ~/.mp3 ~/.mp3.isrunning
       SRC=$(cat ~/.cache/source && rm ~/.cache/source)
       DEST=$(cat ~/.cache/destination && rm ~/.cache/destination)
       [ -d "$DEST" ] || { echo "DEST directory doesn't exist."; mkdir -pv $DEST; }
@@ -15,6 +15,7 @@ lol()
       IFS=$'\n'; for i in *; do
        ffmpeg -i "$i" -sn -vn -dn -map_metadata -1 "$DEST/${i%.*}.mp3"
       done
+      rm -v ~/.mp3.isrunning
     fi
     sleep 5
   done

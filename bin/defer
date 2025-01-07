@@ -8,6 +8,10 @@
 
 [ "$3" ] || { echo "Path to the destination directory. Will be created if It doesn't exist."; exit 1; }
 
+[ -f ~/.$1 ] && { echo "A job is alreaty pending."; exit 1; }
+
+[ -f ~/.$1.isrunning ] && [ -f ~/.cache/source ] && { echo "A job is alreaty pending."; exit 1; }
+
 echo "$2" > ~/.cache/source
 echo "$3" > ~/.cache/destination
 
