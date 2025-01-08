@@ -64,12 +64,12 @@ write()
 {
   local DEST=~/$1.txt
   if [ "$2" != '' ]; then
-    if [ "$2" == 'edit' && "$3" == '' ]; then
+    if [[ "$2" == 'edit' && "$3" == '' ]]; then
       vi "$DEST"
       return
     fi
-    local about="$1"
-    local message="$2"
+    local about="$2"
+    local message="$3"
     echo -e "  \e[00;37m$(date +'%d/%m/%Y-%H:%M:%S'): \e[00;33m>> \e[01;33m${about}\e[00;33m <<\e[0m" >> $DEST
     local IFS=$'\n'
     for i in ${message}; do
