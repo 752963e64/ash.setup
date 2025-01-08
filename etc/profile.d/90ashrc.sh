@@ -1,8 +1,15 @@
 # /etc/profile.d/**ashrc.sh
 
+ssh-agent.start() {
+  eval "$(ssh-agent)"
+}
+
+
 ed25519() {
   ssh-keygen -t ed25519 -C "$1"
   # should check if ssh-agent is running...
+  # strange problem ssh-agent vanish from user control when started
+  # with hidepid=2, it still show the right user in process list viewed by root. 
   ssh-add ~/.ssh/id_ed25519
   cat ~/.ssh/id_ed25519.pub
 }
