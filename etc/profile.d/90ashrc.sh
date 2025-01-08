@@ -86,7 +86,7 @@ write()
 # [ -f ~/.notice.txt ] && { cat ~/.notice.txt; }
 
 
-# find and load ~/.ashrc
+# user defined ashrc.          
 [ -f ~/.ashrc ] && . ~/.ashrc
 
 # protect user environ from stealthy mutation

@@ -5,13 +5,6 @@
 # with package manager that follows the mask...
 umask 027
 
-# edit and reload ashrc.
-ashrc()
-{
-  vi ~/.ashrc
-  . ~/.ashrc
-}
-
 # permit to install content inside /usr/local from user privilege.
 fs.open.usr.local()
 {
