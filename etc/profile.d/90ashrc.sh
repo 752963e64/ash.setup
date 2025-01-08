@@ -59,6 +59,33 @@ host.io()
   [ "$1" ] && { curl "https://host.io/api/full/${1}?token=YOURTOKEN"; }
 }
 
+# write format for todos and notices simply.
+write()
+{
+  local DEST=~/$1.txt
+  if [ "$2" != '' ]; then
+    if [ "$2" == 'edit' && "$3" == '' ]; then
+      vi "$DEST"
+      return
+    fi
+    local about="$1"
+    local message="$2"
+    echo -e "  \e[00;37m$(date +'%d/%m/%Y-%H:%M:%S'): \e[00;33m>> \e[01;33m${about}\e[00;33m <<\e[0m" >> $DEST
+    local IFS=$'\n'
+    for i in ${message}; do
+      echo -en "\t" >> $DEST
+      echo "$i" >> $DEST
+    done
+  fi
+
+  cat $DEST
+}
+
+# shows up your todos & notices each times you open up a shell.                                                                         
+[ -f ~/.todo.txt ] && { cat ~/.todo.txt; }
+# [ -f ~/.notice.txt ] && { cat ~/.notice.txt; }
+
+
 # find and load ~/.ashrc
 [ -f ~/.ashrc ] && . ~/.ashrc
 
