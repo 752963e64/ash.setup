@@ -5,7 +5,7 @@ alias boot.ro='mount -o remount,ro /boot'
 
 # firewall.
 ##############################################
-# netfilter arptable arp
+# netfilter arptables arp
 alias arptables.list='arptables -nvL'
 alias arptables.restore='arptables-restore < /etc/arptables'
 alias arptables.save='arptables-save > /etc/arptables'
@@ -28,4 +28,11 @@ alias ip6tables.save='ip6tables-save > /etc/ip6tables'
 # restore and save the given file
 alias ip6tables.restore.this='ip6tables-restore <'
 alias ip6tables.save.this='ip6tables-save >'
-
+###############################################
+# netfilter ebtables bridge
+alias ebtables.list='ebtables -vL'
+alias ebtables.restore='ebtables-restore < /etc/ebtables'
+alias ebtables.save='ebtables-save > /etc/ebtables'
+# restore and save the given file
+alias ebtables.restore.this='ebtables-restore <'
+alias ebtables.save.this='ebtables-save >'
