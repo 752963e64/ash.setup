@@ -8,6 +8,5 @@ alias notice='write notice'
 alias ashrc='vi ~/.ashrc && . ~/.ashrc'
 alias aliases='vi ~/.aliases && . ~/.aliases'
 
-
-# user defined aliases.
+# load user defined aliases.
 [ -f ~/.aliases ] && . ~/.aliases

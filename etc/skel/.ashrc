@@ -1,64 +1,6 @@
 # ~/.ashrc
 
-ashrc()
-{
-  vi ~/.ashrc
-  . ~/.ashrc
-}
-
-kfs.closed()
-{
-  chmod o-rwx /sys /proc
-  [ -f /tmp/.kfs.open ] && rm /tmp/.kfs.open
-  touch /tmp/.kfs.closed
-}
-
-kfs.openbar()
-{
-  chmod o+rx /sys /proc
-  [ -f /tmp/.kfs.closed ] && rm /tmp/.kfs.closed
-  touch /tmp/.kfs.open
-}
-
-function todo()
-{
-  local TODO=~/TODO.txt
-  if [ "$1" != '' ]; then
-    if [ "$1" == 'edit' && "$2" == '' ]; then
-      vi "$TODO"
-      return
-    fi
-    local about="$1"
-    local message="$2"
-    echo -e "  \e[00;37m$(date +'%d/%m/%Y-%H:%M:%S'): \e[00;33m>> \e[01;33m${about}\e[00;33m <<\e[0m" >> $TODO
-    local IFS=$'\n'
-    for i in ${message}; do
-      echo -e "\t$i" >> $TODO
-    done
-    cat $TODO
-  fi
-
-}
-
-function notice()
-{
-  local NOTICE=~/NOTICE.txt
-  if [ "$1" != '' ]; then
-    if [ "$1" == 'edit' && "$2" == '' ]; then
-      vim "$NOTICE"
-      return
-    fi
-    local about="$1"
-    local message="$2"
-    echo -e "  \e[00;37m$(date +'%d/%m/%Y-%H:%M:%S'): \e[00;33m>> \e[01;33m${about}\e[00;33m <<\e[0m" >> $NOTICE
-    local IFS=$'\n'
-    for i in ${message}; do
-      echo -en "\t" >> $NOTICE
-      echo "$i" >> $NOTICE
-    done
-  fi
-
-  cat $NOTICE
-}
-
+# shows up your todos & notices each times you open up a shell.
+[ -f ~/.todo.txt ] && { cat ~/.todo.txt; }
+# [ -f ~/.notice.txt ] && { cat ~/.notice.txt; }
 

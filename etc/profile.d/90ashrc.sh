@@ -81,12 +81,7 @@ write()
   cat $DEST
 }
 
-# shows up your todos & notices each times you open up a shell.                                                                         
-[ -f ~/.todo.txt ] && { cat ~/.todo.txt; }
-# [ -f ~/.notice.txt ] && { cat ~/.notice.txt; }
-
-
-# user defined ashrc.          
+# load user defined ashrc.          
 [ -f ~/.ashrc ] && . ~/.ashrc
 
 # protect user environ from stealthy mutation
@@ -94,4 +89,24 @@ write()
 #  chmod -v og-wx "$i/.ashrc"
 #  chown root:root "$i/.ashrc"
 # done
+
+
+# root only
+if [ "$USER" = root ]; then
+
+  kfs.closed()
+  {
+    chmod o-rwx /sys /proc
+    [ -f /tmp/.kfs.open ] && rm /tmp/.kfs.open
+    touch /tmp/.kfs.closed
+  }
+
+  kfs.openbar()
+  {
+    chmod o+rx /sys /proc
+    [ -f /tmp/.kfs.closed ] && rm /tmp/.kfs.closed
+    touch /tmp/.kfs.open
+  }
+
+fi
 
