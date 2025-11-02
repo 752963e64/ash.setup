@@ -17,7 +17,7 @@
 ├── profile.d
 │   ├── 10umask.sh
 │   ├── 20locale.sh
-│   ├── 30color_prompt.sh
+│   ├── 30prompt.sh
 │   ├── 40path.sh
 │   ├── 80aliases.sh
 │   ├── 90ashrc.sh
