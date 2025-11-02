@@ -28,7 +28,7 @@ fs.close()
     chmod -Rv o-w "$1"
     chown -Rv root:root "$1"
   else
-    echo "$0 <dir>\n\t- <dir>:The directory to reset privileges."
+    echo "$FUNCNAME <dir>\n\t- <dir>:The directory to reset privileges."
   fi
 }
 
@@ -46,10 +46,12 @@ cpufreq() {
       done
     else
       governors=$(echo $governors | sed s': :\|:g')
-      echo -e "$FUNCNAME <${governors%\|}>\n\t- Governors available for use. Just pick yours."
+      echo "$FUNCNAME <${governors%\|}>"
+      echo -ne "\t"
+      echo "- Governors available for use. Just pick up yours."
     fi
   else
-     echo "$0: no cpu governors found."
+     echo "$FUNCNAME: no cpu governor found."
   fi
 }
 
