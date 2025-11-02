@@ -3,7 +3,7 @@
 # ensure root doesn't leak information
 # when creating file/dir, however this may be problematic
 # with package manager that follows the mask...
-umask 027
+# umask 027
 
 # permit to install content inside /usr/local from user privilege.
 fs.open.usr.local()
