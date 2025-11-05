@@ -51,38 +51,13 @@ urldecode() {
 }
 
 shellcheck() {
-  [ -f "$1" ] && curl -d script=$(urlencode "$(cat $1)") https://www.shellcheck.net/shellcheck.php | jq '.[] | .code,.message'
+  [[ -f "$1" ]] && curl -d script=$(urlencode "$(cat $1)") https://www.shellcheck.net/shellcheck.php | jq '.[] | .code,.message'
 }
 
 host.io()
 {
-  [ "$1" ] && { curl "https://host.io/api/full/${1}?token=YOURTOKEN"; }
+  [[ "$1" ]] && { curl "https://host.io/api/full/${1}?token=YOURTOKEN"; }
 }
-
-# write format for todos and notices simply.
-write()
-{
-  local DEST=~/$1.txt
-  if [ "$2" != '' ]; then
-    if [[ "$2" == 'edit' && "$3" == '' ]]; then
-      vi "$DEST"
-      return
-    fi
-    local about="$2"
-    local message="$3"
-    echo -e "  \e[00;37m$(date +'%d/%m/%Y-%H:%M:%S'): \e[00;33m>> \e[01;33m${about}\e[00;33m <<\e[0m" >> $DEST
-    local IFS=$'\n'
-    for i in ${message}; do
-      echo -en "\t" >> $DEST
-      echo "$i" >> $DEST
-    done
-  fi
-
-  cat $DEST
-}
-
-# load user defined ashrc.          
-[ -f ~/.ashrc ] && . ~/.ashrc
 
 # protect user environ from stealthy mutation
 # for i in $(find /home -type d); do
@@ -109,4 +84,7 @@ if [ "$USER" = root ]; then
   }
 
 fi
+
+# load user defined ashrc.
+[ -f ~/.ashrc ] && . ~/.ashrc
 

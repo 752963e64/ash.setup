@@ -1,0 +1,47 @@
+#!/usr/bin/env ash
+# 
+# Handles ~/.notice and ~/.todo
+# using symlinks ~/bin/<todo|notice> -> /usr/local/bin/strfmt1
+# ln -sv /usr/local/bin/strfmt1 ~/bin/todo
+# ln -sv /usr/local/bin/strfmt1 ~/bin/notice 
+# multiline message feaature if u don't put an ending quote before you return :)
+# usage:
+# 	<todo|notice> "title" "message"
+#	
+
+# ensure this format is called by what we expect
+case "$0" in
+ todo) ;;
+ notice) ;;
+ *)
+   echo "<todo|notice> \"<title>\" \"<message>\""
+   return 1
+   ;;
+esac
+
+# ensure here is no argument to print ~/.<todo|notice> if present.
+[[ ! "$1" ]] && {
+  if [ -f ~/."$0" ]; then
+    swallow ~/."$0"
+    return 0
+  fi
+}
+
+# ensure a second and a third argument been passed
+if [[ "$2" && "$3" ]]; then
+  if [[ "$2" == 'edit' ]]; then
+    vi ~/."$0"
+    return 0
+  fi
+  echo -en "  \e[00;37m$(date +'%d/%m/%Y-%H:%M:%S'): \e[00;33m>> \e[01;33m${2}\e[00;33m <<\e[0m" >> ~/."$0"
+  IFS=$'\n'
+  for i in "$3"; do
+    echo -en "\t" >> ~/."$0"
+    echo "$i" >> ~/."$0"
+  done
+  return 0
+fi
+
+# if it ends here, something is wrong :/
+return 1
+
