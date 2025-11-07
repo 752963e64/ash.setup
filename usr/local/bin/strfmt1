@@ -7,6 +7,11 @@
 # multiline message feaature if u don't put an ending quote before you return :)
 # usage:
 # 	<todo|notice> "title" "message"
+#  - write a todo or a notice into $HOME.
+#  <todo|notice> edit
+#  - edit your todo or notice.
+#  <todo|notice>
+#  - show up your todo or notice.
 #	
 
 # ensure this format is called by what we expect
@@ -28,6 +33,7 @@ esac
 }
 
 # ensure a second and a third argument been passed
+# - should we trim possible newline into title?
 if [[ "$2" && "$3" ]]; then
   if [[ "$2" == 'edit' ]]; then
     vi ~/."$0"
