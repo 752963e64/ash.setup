@@ -8,6 +8,8 @@ alias chmod='chmod -v'
 alias chown='chown -v'
 alias mount='mount -v'
 alias umount='umount -v'
+alias remount.ro='mount -o remount,ro'
+alias remount.rw='mount -o remount,rw'
 
 alias ..='cd ..'
 alias ashrc='vi ~/.ashrc && . ~/.ashrc'
