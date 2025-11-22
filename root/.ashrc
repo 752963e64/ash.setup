@@ -32,29 +32,6 @@ fs.close()
   fi
 }
 
-# cpufreq ondemand|performance|...
-cpufreq() {
-  if [ -f /sys/devices/system/cpu/cpufreq/policy0/scaling_available_governors ]; then
-    local governors="$(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_available_governors)"
-    if [ "$1" ]; then
-      for i in $governors; do
-        if [[ "$i" == "$1" ]]; then
-          for i in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-            echo "$1" > "$i"                                                
-          done
-        fi
-      done
-    else
-      governors=$(echo $governors | sed s': :\|:g')
-      echo "$FUNCNAME <${governors%\|}>"
-      echo -ne "\t"
-      echo "- Governors available for use. Just pick up yours."
-    fi
-  else
-     echo "$FUNCNAME: no cpu governor found."
-  fi
-}
-
 # open up network alike we live in a wonderful world.
 # route.default() {
 #  ip route add default via <GATEWAY>
