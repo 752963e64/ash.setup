@@ -1,11 +1,14 @@
 # /etc/profile.d/**aliases.sh
 # system wide alias
+alias ls='ls --color'
 alias l='ls -alsh'
 alias mv='mv -v'
 alias rm='rm -v'
 alias chmod='chmod -v'
 alias chown='chown -v'
 alias mount='mount -v'
+alias umount='umount -v'
+
 alias ..='cd ..'
 alias ashrc='vi ~/.ashrc && . ~/.ashrc'
 alias aliases='vi ~/.aliases && . ~/.aliases'
