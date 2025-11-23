@@ -13,7 +13,7 @@ if [ -f /sys/devices/system/cpu/cpufreq/policy0/scaling_available_governors ]; t
     done
   else
     governors=$(echo $governors | sed s': :\|:g')
-    echo "$0: <${governors%\|}>"
+    echo "${0##*/}: <${governors%\|}>"
     echo -ne "\t"
     echo "- Governors available for use. Just pick up yours."
   fi
