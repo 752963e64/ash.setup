@@ -24,6 +24,10 @@ alias arptables.save.this='arptables-save >'
 
 ###############################################
 # netfilter iptables ipv4
+alias iptables.raw='iptables -t raw'
+alias iptables.nat='iptables -t nat'
+alias iptables.filter='iptables -t filter'
+
 alias iptables.raw.list='iptables -t raw -nvL'
 alias iptables.nat.list='iptables -t nat -nvL'
 alias iptables.filter.list='iptables -t filter -nvL'
@@ -42,9 +46,17 @@ alias iptables.restore.this='iptables-restore <'
 alias iptables.save.this='iptables-save >'
 ###############################################
 # netfilter ip6tables ipv6
+alias ip6tables.raw='ip6tables -t raw'
+alias ip6tables.filter='ip6tables -t filter'
+alias ip6tables.nat='ip6tables -t nat'
+
 alias ip6tables.raw.list='ip6tables -t raw -nvL'
-alias ip6tables.filter.list='ip6tables -t filter -nvL'
 alias ip6tables.nat.list='ip6tables -t nat -nvL'
+alias ip6tables.filter.list='ip6tables -t filter -nvL'
+
+alias ip6tables.raw.zero='ip6tables -t raw -Z'
+alias ip6tables.nat.zero='ip6tables -t nat -Z'
+alias ip6tables.filter.zero='ip6tables -t filter -Z'
 
 alias ip6tables.restore.rules='ip6tables-restore < /etc/ip6tables'
 
