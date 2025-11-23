@@ -1,7 +1,4 @@
 # ~/.aliases
-# manage boot mount point.
-alias boot.rw='mount -o remount,rw /boot'
-alias boot.ro='mount -o remount,ro /boot'
 
 # firewall.
 ##############################################
