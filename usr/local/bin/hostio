@@ -1,0 +1,15 @@
+#!/usr/bin/env ash
+
+[[ "$1" ]] || {
+  echo "${0##*/} <IP>"
+  echo '  - Setup your TOKEN first inside /usr/local/bin/hostio.'
+  return
+}
+
+[ -x /usr/bin/curl ] || {
+  echo "error: The HTTP(s) proccessor curl is unavailable."
+  return
+}
+
+curl "https://host.io/api/full/${1}?token=YOURTOKEN"
+

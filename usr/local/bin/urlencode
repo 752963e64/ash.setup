@@ -1,0 +1,20 @@
+#!/usr/bin/env ash
+
+[[ "$1" ]] || {
+  echo "${0##*/} <str>"
+  return
+}
+
+# urlencode <string>
+# https://gist.github.com/cdown/1163649
+# modified for ash by 752963e64 - 22/11/2024
+length=$((${#1}-1))
+i=0; while [ $i -le $length ]; do
+  c="${1:$i:1}"
+  case $c in
+    [a-zA-Z0-9.~_-]) printf '%s' "$c" ;;
+    *) printf '%%%02X' "'$c" ;;
+  esac
+  i=$((++i))
+done
+

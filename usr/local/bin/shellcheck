@@ -1,0 +1,15 @@
+#!/usr/bin/env ash
+
+[[ "$1" ]] && [ -f "$1" ] || {
+  echo "${0##*/} <file>"
+  return
+}
+
+[ -x /usr/bin/jqk ] || {
+  echo "error: The JSON proccessor jq is unavailable."
+  return
+}
+
+
+curl -d script=$(urlencode "$(cat $1)") https://www.shellcheck.net/shellcheck.php | jq '.[] | .code,.message'
+

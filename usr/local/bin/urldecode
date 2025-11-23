@@ -1,0 +1,11 @@
+#!/usr/bin/env ash
+
+[[ "$1" ]] || {
+  echo "${0##*/} <str>"
+  return
+}
+
+# urldecode <string>
+# https://gist.github.com/cdown/1163649
+local url_encoded="${1//+/ }"
+printf '%b' "${url_encoded//%/\\x}"
