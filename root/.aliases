@@ -48,7 +48,7 @@ alias ip6tables.nat.list='ip6tables -t nat -nvL'
 
 alias ip6tables.restore.rules='ip6tables-restore < /etc/ip6tables'
 
-alias ip6tables.save.rules='ip6tables-save > /etc/ip6tables
+alias ip6tables.save.rules='ip6tables -t raw -Z &&
   ip6tables-save -t raw > /etc/iptables/rules6-save &&
   ip6tables -t filter -Z &&
   ip6tables-save -t filter >> /etc/iptables/rules6-save &&
