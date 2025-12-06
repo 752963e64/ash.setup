@@ -5,7 +5,7 @@
   return
 }
 
-[ -x /usr/bin/jqk ] || {
+[ -x /usr/bin/jq ] || {
   echo "error: The JSON proccessor jq is unavailable."
   return
 }
