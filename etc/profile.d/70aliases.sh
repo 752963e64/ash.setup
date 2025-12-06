@@ -20,6 +20,9 @@ if [ -x /usr/bin/git ]; then
   alias git.log='git log'
   alias git.commit='git commit -m'
   alias git.branch='git branch'
+  alias git.reset='git reset'
+  alias git.mv='git mv'
+  alias git.rm='git rm'
 fi
 
 # load user defined aliases.
