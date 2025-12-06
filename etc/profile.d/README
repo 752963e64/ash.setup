@@ -5,16 +5,8 @@ Files with the .sh extension found in this directory are evaluated by
 Bourne-compatible shells (like ash, bash or zsh) when started as a
 login shell.
 
-### ~/
+These files are used each times you fire up a shell, you must not 
+overload them too much as they setup default environment. Instead
+you should offload definition to:
 
-never install binary into your user directory...
-
-It's not security to do so.
-
-Instead uses open.usr.local() and install the binary using your user shell pointing to /usr/local... and close.usr.local()
-
-Both functions are declared into root's .ashrc.
-
-Doing like this you will be safer with binary mutation/rewrite :)
-
-Careful with internet... there is dumbasses looking smart...
+ ```~/bin:/usr/local/bin:/usr/local/sbin```
