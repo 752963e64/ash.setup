@@ -1,0 +1,17 @@
+#!/usr/bin/env ash
+
+[[ "$1" ]] &&
+{
+  /usr/bin/env $@
+  return
+}
+
+rval="${IFS}"
+
+IFS=$'\n'; for i in $(/usr/bin/env); do
+  echo -n "${i%%=*}=" && echo -en "\e[38;5;250m" && echo -n "${i#*=}" && echo -e "\e[00m"
+done
+
+IFS="${rval}"
+unset rval
+
