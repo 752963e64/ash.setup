@@ -3,7 +3,13 @@
 # default permissions for newly created dir/file
 # umask 027
 
+# autoload X at login
+# pgrep Xorg &> /dev/null
+# if [ $? != 0 ]; then
+#   exec startx
+# fi
+
 # shows up your todos & notices each times you open up a shell.
-[ -f ~/.todo.txt ] && { cat ~/.todo.txt; }
+# [ -f ~/.todo.txt ] && { cat ~/.todo.txt; }
 # [ -f ~/.notice.txt ] && { cat ~/.notice.txt; }
 
