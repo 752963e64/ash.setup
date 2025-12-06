@@ -1,6 +1,7 @@
 # /etc/profile.d/**aliases.sh
 # system wide alias
 alias ls='ls --color'
+alias grep='grep --color'
 alias l='ls -alsh'
 alias mv='mv -v'
 alias rm='rm -v'
