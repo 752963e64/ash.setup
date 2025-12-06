@@ -9,4 +9,4 @@ These files are used each times you fire up a shell, you must not
 overload them too much as they setup default environment. Instead
 you should offload definition to:
 
- ```~/bin:/usr/local/bin:/usr/local/sbin```
+~/bin:/usr/local/bin:/usr/local/sbin
