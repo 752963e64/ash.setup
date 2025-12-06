@@ -4,12 +4,12 @@
 
 case "$1" in
   start)
-    modprobe -v kvm_intel
+    modprobe -v kvm
     lsmod | grep kvm
     chmod o-rwx /dev/kvm
   ;;
   stop)
-    rmmod -v kvm_intel kvm
+    rmmod -v kvm
   ;;
   *)
     echo "Usage: ${0##*/} start|stop"
