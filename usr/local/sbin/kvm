@@ -1,0 +1,19 @@
+#!/usr/bin/env ash
+
+[[ "$1" ]] || return 1
+
+case "$1" in
+  start)
+    modprobe -v kvm_intel
+    lsmod | grep kvm
+    chmod o-rwx /dev/kvm
+  ;;
+  stop)
+    rmmod -v kvm_intel kvm
+  ;;
+  *)
+    echo "Usage: ${0##*/} start|stop"
+  ;;
+esac
+
+

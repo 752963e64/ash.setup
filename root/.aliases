@@ -16,8 +16,8 @@ alias apk.upgrade='remount.rw && apk upgrade && remount.ro'
 ##############################################
 # netfilter arptables arp
 alias arptables.list='arptables -nvL'
-alias arptables.restore='arptables-restore < /etc/arptables'
-alias arptables.save='arptables-save > /etc/arptables'
+alias arptables.restore='arptables-restore < /etc/arptables/rules-save'
+alias arptables.save='arptables-save > /etc/arptables/rules-save'
 # restore and save the given file
 alias arptables.restore.this='arptables-restore <'
 alias arptables.save.this='arptables-save >'
@@ -58,7 +58,7 @@ alias ip6tables.raw.zero='ip6tables -t raw -Z'
 alias ip6tables.nat.zero='ip6tables -t nat -Z'
 alias ip6tables.filter.zero='ip6tables -t filter -Z'
 
-alias ip6tables.restore.rules='ip6tables-restore < /etc/ip6tables'
+alias ip6tables.restore.rules='ip6tables-restore < /etc/iptables/rules6-save'
 
 alias ip6tables.save.rules='ip6tables -t raw -Z &&
   ip6tables-save -t raw > /etc/iptables/rules6-save &&
