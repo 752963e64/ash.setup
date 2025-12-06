@@ -4,11 +4,13 @@
 
 case "$1" in
   start)
+    [ -f /dev/kvm ] && return 1
     modprobe -v kvm
     lsmod | grep kvm
     chmod o-rwx /dev/kvm
   ;;
   stop)
+    [ -f /dev/kvm ] || return 1
     rmmod -v kvm
   ;;
   *)
