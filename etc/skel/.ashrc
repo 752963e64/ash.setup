@@ -3,6 +3,11 @@
 # default permissions for newly created dir/file
 # umask 027
 
+# stop here when invocation isn't interactive.
+if [[ $- != *i* ]] ; then
+  return
+fi
+
 # autoload X at login
 # pgrep Xorg &> /dev/null
 # if [ $? != 0 ]; then

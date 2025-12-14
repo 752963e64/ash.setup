@@ -1,5 +1,10 @@
 # ~/.ashrc
 
+# stop here when invocation isn't interactive.
+if [[ $- != *i* ]] ; then
+  return
+fi
+
 # ensure root doesn't leak information
 # when creating file/dir, however this may be problematic
 # with package manager that follows the mask...
