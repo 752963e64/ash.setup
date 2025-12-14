@@ -1,0 +1,35 @@
+#!/usr/bin/env ash
+
+# to be symlinked...
+
+bridge.start()
+{
+  local _iface="ra0"
+  local _bridge="br0"
+  local _network="1.1.1.1/24"
+  local _gateway="1.1.1.254"
+
+  # flush physical interface
+  ip addr flush dev "$_ifname"
+  # add a bridge
+  ip link add "$_bridge" type bridge
+  # start the bridge
+  ip link set "$_bridge" up
+  # Add your physical interface to the bridge
+  ip link set "$_iface" master "$_bridge"
+  # At this point connection to network on host is lost. If you want to restore connection:
+  # dhclient -v Gefyra0 (for dhcp)
+  # dhclient -v Gefyra0 -r (to release IP)
+  # for static
+  ip addr add "$_network" dev "$_bridge"
+  ip route add default via "$_gateway"
+}
+
+bridge.stop()
+{
+  local _bridge="br0"
+  ip link del "$_bridge"
+}
+
+${0##*/}
+

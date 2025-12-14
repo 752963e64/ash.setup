@@ -1,0 +1,27 @@
+#!/usr/bin/env ash
+
+# to be symlinked...
+
+tap.start()
+{
+  [ "$1" ] || return 1
+  local _iface="$1"   # interface name
+  local _user="USER"   # user of the tap device?
+  local _bridge="br0" # bridge to attach to
+  lsmod | grep tun
+  [ 0 = $? ] || modprobe -v tun
+  # add tun/tap interfaces for VMs
+  ip tuntap add "$_iface" mode tap user "$_user"
+  ip link set "$_iface" up
+  ip link set "$_iface" master "$_bridge"
+}
+
+tap.stop()
+{
+  [ "$1" ] || return 1
+  local _iface="$1"
+  ip tuntap del "$_iface" mode tap
+}
+
+${0##*/} "$1"
+
