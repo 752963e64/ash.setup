@@ -4,9 +4,12 @@
 # umask 027
 
 # stop here when invocation isn't interactive.
-if [[ $- != *i* ]] ; then
-  return
-fi
+case $- in
+  *i*) ;;
+  *)
+    return
+  ;;
+esac
 
 # autoload X at login
 # pgrep Xorg &> /dev/null

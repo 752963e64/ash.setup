@@ -1,9 +1,12 @@
 # ~/.ashrc
 
 # stop here when invocation isn't interactive.
-if [[ $- != *i* ]] ; then
-  return
-fi
+case $- in
+  *i*) ;;
+  *)
+    return
+  ;;
+esac
 
 # ensure root doesn't leak information
 # when creating file/dir, however this may be problematic
